@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terapeuta do Alegrete</title>
+<meta name="description" content="O novo livro de Nelson Carus. Dinho é guasca, esperto e mais mentiroso que guri em porta de baile — e você vai gostar dele assim mesmo. Venda direta com o autor.">
+<meta property="og:title" content="Terapeuta do Alegrete — Nelson Carus">
+<meta property="og:description" content="Mais mentiroso que guri em porta de baile. E, mesmo assim, você vai torcer por ele.">
+<meta property="og:image" content="img/capa.jpg">
+<meta property="og:type" content="book">
+<link rel="icon" href="img/capa.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+
+<style>
+/* ============================================================
+   TERAPEUTA DO ALEGRETE — página de vendas
+   Paleta retirada da capa: campo de mostarda, tinta preta,
+   azul da camisa, creme do guarda-pó, marrom da bota.
+   ============================================================ */
+:root{
+  color-scheme: light;
+  --sol:#D9A62E;
+  --sol-claro:#E8C15A;
+  --sol-fundo:#C4901F;
+  --sol-texto:#8F650F;
+  --tinta:#14110C;
+  --tinta-2:#241E15;
+  --osso:#F4ECDC;
+  --osso-2:#EBE0CA;
+  --campo:#27637C;
+  --campo-claro:#8FBDCE;
+  --barro:#6B4630;
+  --prosa:#3A3227;
+  --suave:#6A6053;
+  --linha:rgba(20,17,12,.14);
+  --linha-forte:rgba(20,17,12,.28);
+  --max:1160px;
+  --col:34rem;
+  --r:2px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--osso);
+  color:var(--prosa);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+/* ---------- tipografia ---------- */
+h1,h2,h3,.display{
+  font-family:"Anton",Impact,"Haettenschweiler","Arial Narrow Bold",sans-serif;
+  font-weight:400;
+  text-transform:uppercase;
+  letter-spacing:.005em;
+  line-height:.94;
+  text-wrap:balance;
+  color:var(--tinta);
+  margin:0;
+}
+h1{font-size:clamp(3.1rem,11.5vw,7.4rem)}
+h2{font-size:clamp(2rem,5.4vw,3.5rem)}
+h3{font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.08}
+p{margin:0}
+em{font-style:italic}
+strong{font-weight:600;color:var(--tinta)}
+
+.rotulo{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--sol-texto);
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+}
+.rotulo::before{content:"";width:1.9rem;height:2px;background:var(--sol);flex:none}
+.ui{font-family:"Archivo",system-ui,sans-serif}
+
+.prosa{display:flex;flex-direction:column;gap:1.05rem;max-width:var(--col);font-size:1.115rem}
+.prosa.larga{max-width:44rem}
+
+/* ---------- estrutura ---------- */
+.faixa{padding:clamp(4.2rem,9vw,7.5rem) 1.4rem}
+.env{max-width:var(--max);margin-inline:auto}
+.claro{background:var(--osso)}
+.claro-2{background:var(--osso-2)}
+.escuro{background:var(--tinta);color:#D8CEBC}
+.escuro h1,.escuro h2,.escuro h3{color:var(--osso)}
+.escuro .rotulo{color:var(--sol-claro)}
+.escuro strong{color:var(--osso)}
+
+.marca-sol{color:var(--sol-texto)}
+.escuro .marca-sol{color:var(--sol-claro)}
+.marca-campo{color:var(--campo)}
+.escuro .marca-campo{color:var(--campo-claro)}
+
+/* ---------- botões ---------- */
+.btn{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-weight:700;
+  font-size:.95rem;
+  letter-spacing:.02em;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  padding:1.05rem 1.9rem;
+  border:2px solid var(--tinta);
+  border-radius:var(--r);
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease;
+  box-shadow:5px 5px 0 var(--tinta);
+}
+.btn-1{background:var(--tinta);color:var(--sol-claro);box-shadow:5px 5px 0 var(--sol-fundo)}
+.btn-1:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--sol-fundo)}
+.btn-2{background:transparent;color:var(--tinta);box-shadow:5px 5px 0 rgba(20,17,12,.18)}
+.btn-2:hover{transform:translate(-2px,-2px);background:var(--tinta);color:var(--osso)}
+.escuro .btn-1{background:var(--sol);color:var(--tinta);border-color:var(--sol);box-shadow:5px 5px 0 rgba(0,0,0,.5)}
+.escuro .btn-2{color:var(--osso);border-color:var(--osso);box-shadow:5px 5px 0 rgba(0,0,0,.45)}
+.escuro .btn-2:hover{background:var(--osso);color:var(--tinta)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--campo);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.btn{transition:none}.btn:hover{transform:none}}
+
+.botoes{display:flex;flex-wrap:wrap;gap:.9rem 1rem;align-items:center}
+.selo-btn{font-family:"Archivo",system-ui,sans-serif;font-size:.78rem;letter-spacing:.04em;color:var(--suave)}
+.escuro .selo-btn{color:#9D9384}
+
+/* ---------- topo ---------- */
+.topo{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,236,220,.93);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--linha);
+}
+.topo-in{
+  max-width:var(--max);margin-inline:auto;
+  display:flex;align-items:center;gap:1.6rem;
+  padding:.75rem 1.4rem;
+}
+.assinatura{
+  font-family:"Anton",Impact,sans-serif;text-transform:uppercase;
+  font-size:1.02rem;letter-spacing:.04em;color:var(--tinta);
+  text-decoration:none;line-height:1;
+}
+.assinatura span{color:var(--sol-texto)}
+.menu{display:flex;gap:1.5rem;margin-left:auto;font-family:"Archivo",system-ui,sans-serif;font-size:.85rem;font-weight:600}
+.menu a{text-decoration:none;color:var(--prosa);padding-block:.2rem;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--tinta);border-color:var(--sol)}
+.topo .btn{padding:.62rem 1.15rem;font-size:.83rem;box-shadow:3px 3px 0 var(--sol-fundo)}
+@media (max-width:900px){.menu{display:none}.topo .btn{margin-left:auto}}
+
+/* ---------- capa / herói ---------- */
+.heroi{
+  position:relative;
+  background:
+    radial-gradient(85% 78% at 71% 44%, #2E2618 0%, var(--tinta) 58%, #0B0906 100%);
+  color:#A99E8D;
+  padding:clamp(3rem,7vw,5.5rem) 1.4rem clamp(3.5rem,7vw,6rem);
+  overflow:hidden;
+}
+.heroi-in{
+  max-width:var(--max);margin-inline:auto;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);align-items:center;
+}
+.heroi .rotulo{color:var(--sol-claro)}
+.heroi .rotulo::before{background:var(--sol)}
+.autor-capa{
+  font-family:"Anton",Impact,sans-serif;text-transform:uppercase;
+  font-size:clamp(1.1rem,3vw,1.7rem);letter-spacing:.12em;color:#9D9384;
+  margin:1.4rem 0 .25rem;
+}
+.heroi h1{color:var(--osso);margin-bottom:1.3rem}
+.heroi h1 .l2{display:block;font-size:.735em;letter-spacing:.01em;color:var(--sol)}
+.gancho{
+  font-size:clamp(1.22rem,2.5vw,1.6rem);
+  line-height:1.32;color:var(--osso);font-weight:500;
+  max-width:26ch;margin-bottom:1rem;
+}
+.heroi-texto{color:#A99E8D;max-width:40ch;font-size:1.08rem;margin-bottom:1.9rem}
+.heroi .botoes{margin-bottom:1.6rem}
+.heroi .btn-1{background:var(--sol);color:var(--tinta);border-color:var(--sol);box-shadow:5px 5px 0 rgba(0,0,0,.6)}
+.heroi .btn-1:hover{background:var(--sol-claro)}
+.heroi .btn-2{border-color:var(--osso);color:var(--osso);box-shadow:5px 5px 0 rgba(0,0,0,.5)}
+.heroi .btn-2:hover{background:var(--osso);color:var(--tinta)}
+
+.tres{
+  display:flex;flex-wrap:wrap;gap:.5rem .6rem;
+  font-family:"Archivo",system-ui,sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+}
+.tres li{list-style:none;border:1.5px solid rgba(244,236,220,.3);padding:.42rem .8rem;color:#C4BAA8;border-radius:99px}
+
+.capa-caixa{position:relative;justify-self:center}
+.capa-caixa::after{
+  content:"";position:absolute;inset:-18px -22px auto 20px;height:100%;
+  border:2px solid rgba(217,166,46,.45);z-index:0;
+}
+.capa-caixa img{
+  position:relative;z-index:1;width:min(340px,72vw);
+  box-shadow:0 34px 70px -20px rgba(0,0,0,.85), 0 0 90px -30px rgba(232,193,90,.5);
+  transform:rotate(-1.6deg);
+}
+@media (max-width:860px){
+  .heroi-in{grid-template-columns:1fr;text-align:left}
+  .capa-caixa{order:-1;margin-bottom:.5rem}
+  .capa-caixa img{width:min(240px,60vw)}
+}
+
+/* ---------- citação de abertura ---------- */
+.mote{background:var(--sol);color:var(--tinta);padding:clamp(3rem,6vw,4.6rem) 1.4rem;text-align:center;
+  border-bottom:3px solid var(--tinta)}
+.mote-frase{
+  font-family:"Newsreader",Georgia,serif;font-style:italic;
+  font-size:clamp(1.5rem,3.8vw,2.5rem);line-height:1.24;
+  max-width:22ch;margin:0 auto;color:var(--tinta);text-wrap:balance;
+}
+.mote-frase b{font-style:normal;font-weight:400;color:var(--tinta);font-family:"Anton",Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.mote-quem{margin-top:1.5rem;font-family:"Archivo",system-ui,sans-serif;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:#5B4712}
+
+/* ---------- seções com cabeçalho + prosa ---------- */
+.cabeca{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2.6rem;max-width:25ch}
+.cabeca.solta{max-width:30ch}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:860px){.duas{grid-template-columns:1fr;gap:2rem}.cabeca{margin-bottom:1.6rem}}
+
+/* ---------- cartões ---------- */
+.grade{display:grid;gap:1.1rem;margin-top:3rem}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:860px){.g3,.g2{grid-template-columns:1fr}}
+.cartao{
+  background:rgba(255,255,255,.5);
+  border:1px solid var(--linha);
+  border-top:3px solid var(--sol);
+  padding:1.7rem 1.5rem 1.8rem;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.escuro .cartao{background:var(--tinta-2);border-color:rgba(244,236,220,.14);border-top-color:var(--sol)}
+.cartao p{font-size:1rem;color:var(--suave)}
+.escuro .cartao p{color:#A99E8D}
+.cartao .fonte{margin-top:auto;padding-top:.6rem;font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-texto)}
+
+/* ---------- fichas (reconhecimento) ---------- */
+.fichas{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:2.8rem;border-top:1px solid var(--linha)}
+.ficha{padding:1.7rem 1.6rem;border-bottom:1px solid var(--linha);display:flex;gap:1.1rem;align-items:flex-start}
+.ficha:nth-child(odd){border-right:1px solid var(--linha)}
+.ficha .n{font-family:"Anton",Impact,sans-serif;font-size:1.5rem;color:var(--sol);line-height:1;flex:none;width:1.6rem}
+.ficha h3{font-size:1.05rem;margin-bottom:.4rem}
+.ficha p{font-size:1rem;color:var(--suave)}
+@media (max-width:720px){.fichas{grid-template-columns:1fr}.ficha:nth-child(odd){border-right:0}}
+
+/* ---------- temas ---------- */
+.temas{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:2.2rem;padding:0;list-style:none}
+.temas li{
+  font-family:"Archivo",system-ui,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  border:1px solid var(--linha-forte);padding:.45rem .85rem;color:var(--prosa);
+}
+.escuro .temas li{border-color:rgba(244,236,220,.28);color:#C4BAA8}
+
+/* ---------- listas para quem é ---------- */
+.listas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);margin-top:2.6rem}
+@media (max-width:760px){.listas{grid-template-columns:1fr}}
+.lista{list-style:none;padding:0;margin:1.2rem 0 0;display:flex;flex-direction:column;gap:.85rem}
+.lista li{display:flex;gap:.75rem;align-items:flex-start;font-size:1.05rem}
+.lista .mk{font-family:"Archivo",sans-serif;font-weight:700;flex:none;line-height:1.5}
+.sim .mk{color:var(--campo)}
+.nao .mk{color:var(--barro)}
+.nao li{color:var(--suave)}
+
+/* ---------- faixa de chamada ---------- */
+.chamada{
+  background:var(--tinta);
+  border-top:3px solid var(--sol);border-bottom:3px solid var(--sol);
+  padding:clamp(3rem,6vw,4.4rem) 1.4rem;
+}
+.chamada.sol{background:var(--sol)}
+.chamada.sol h2{color:var(--tinta)}
+.chamada.sol p{color:#4A3A10}
+.chamada.sol .btn-1{background:var(--tinta);color:var(--sol-claro);border-color:var(--tinta);box-shadow:5px 5px 0 rgba(20,17,12,.35)}
+.chamada.sol .btn-2{border-color:var(--tinta);color:var(--tinta);box-shadow:5px 5px 0 rgba(20,17,12,.22)}
+.chamada.sol .btn-2:hover{background:var(--tinta);color:var(--osso)}
+.chamada-in{max-width:var(--max);margin-inline:auto;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between}
+.chamada h2{color:var(--osso);max-width:16ch}
+.chamada p{color:#A99E8D;max-width:34ch;margin-top:.8rem;font-size:1.08rem}
+.chamada .btn-1{background:var(--sol);color:var(--tinta);border-color:var(--sol);box-shadow:5px 5px 0 rgba(0,0,0,.55)}
+.chamada .btn-2{border-color:var(--osso);color:var(--osso);box-shadow:5px 5px 0 rgba(0,0,0,.45)}
+.chamada .btn-2:hover{background:var(--osso);color:var(--tinta)}
+
+/* ---------- autor ---------- */
+.autor-grade{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:880px){.autor-grade{grid-template-columns:1fr}}
+.autor-foto{position:relative}
+.autor-foto img{border:1px solid rgba(244,236,220,.2);width:100%}
+.autor-foto figcaption{margin-top:.8rem;font-family:"Archivo",sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#8E8474}
+.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:1.6rem;margin-top:2.4rem;padding-top:1.8rem;border-top:1px solid rgba(244,236,220,.18)}
+.numero .v{font-family:"Anton",Impact,sans-serif;font-size:1.9rem;color:var(--sol-claro);line-height:1;font-variant-numeric:tabular-nums}
+.numero .r{font-family:"Archivo",sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#9D9384;margin-top:.45rem}
+
+/* ---------- oferta ---------- */
+.oferta{background:var(--sol);border-top:3px solid var(--tinta);border-bottom:3px solid var(--tinta)}
+.oferta-caixa{
+  background:var(--osso);
+  border:3px solid var(--tinta);
+  box-shadow:14px 14px 0 rgba(20,17,12,.85);
+  padding:clamp(2rem,4.5vw,3.2rem);
+  max-width:56rem;margin-inline:auto;
+}
+.oferta-topo{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:baseline;justify-content:space-between;padding-bottom:1.6rem;border-bottom:1px solid var(--linha)}
+.preco{font-family:"Anton",Impact,sans-serif;font-size:clamp(2.6rem,7vw,4rem);color:var(--tinta);line-height:.9;font-variant-numeric:tabular-nums}
+.preco-obs{font-family:"Archivo",sans-serif;font-size:.85rem;color:var(--suave);margin-top:.6rem}
+.inclui{list-style:none;padding:0;margin:1.7rem 0 2rem;display:grid;gap:.8rem}
+.inclui li{display:flex;gap:.8rem;align-items:flex-start;font-size:1.05rem}
+.inclui .mk{color:var(--sol-texto);font-family:"Archivo",sans-serif;font-weight:700;flex:none}
+.oferta .botoes{gap:1rem}
+.oferta .btn{flex:1 1 auto;min-width:16rem}
+
+/* ---------- perguntas ---------- */
+.perguntas{max-width:44rem;margin:2.6rem auto 0;border-top:1px solid var(--linha)}
+details{border-bottom:1px solid var(--linha)}
+summary{
+  cursor:pointer;list-style:none;padding:1.25rem .5rem 1.25rem 0;
+  font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:1.02rem;color:var(--tinta);
+  display:flex;gap:1rem;align-items:center;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font-family:"Anton",sans-serif;color:var(--sol-texto);font-size:1.35rem;line-height:1;transition:transform .2s ease}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 2.5rem 1.4rem 0;color:var(--suave);max-width:60ch}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--tinta);color:#8E8474;padding:3.5rem 1.4rem 7rem;font-family:"Archivo",system-ui,sans-serif;font-size:.85rem}
+.rodape-in{max-width:var(--max);margin-inline:auto;display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:center;justify-content:space-between}
+.rodape a{color:var(--sol-claro);text-decoration:none}
+.rodape a:hover{text-decoration:underline}
+.rodape .assinatura{color:var(--osso);font-size:1.05rem}
+
+/* ---------- barra fixa (celular) ---------- */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--tinta);border-top:3px solid var(--sol);
+  padding:.7rem 1rem;display:none;align-items:center;gap:1rem;
+  transform:translateY(110%);transition:transform .25s ease;
+}
+.barra.ver{transform:translateY(0)}
+.barra .t{font-family:"Archivo",sans-serif;font-size:.78rem;color:#A99E8D;line-height:1.25}
+.barra .t b{display:block;color:var(--osso);font-size:.9rem}
+.barra .btn{margin-left:auto;padding:.75rem 1.15rem;font-size:.85rem;box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+@media (max-width:820px){.barra{display:flex}}
+@media (prefers-reduced-motion: reduce){.barra{transition:none}}
+
+/* ---------- revelação ---------- */
+.rev{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rev.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     ⚙️  EDITE SOMENTE ESTE BLOCO
+     Troque os valores abaixo e a página inteira se atualiza sozinha:
+     todos os botões, o preço e o WhatsApp.
+     ===================================================================== -->
+<script>
+window.CONFIG = {
+  checkout:  "#COLE-AQUI-O-LINK-DO-CHECKOUT",
+  whatsapp:  "5555000000000",                    // só números, com 55 na frente
+  whatsMsg:  "Olá! Quero saber sobre o livro Terapeuta do Alegrete.",
+  preco:     "R$ 00,00",
+  parcelas:  "ou em até 3x sem juros no cartão",
+  envio:     "Envio para todo o Brasil"
+};
+</script>
+<!-- ===================================================================== -->
+
+<header class="topo">
+  <div class="topo-in">
+    <a class="assinatura" href="#topo">Nelson <span>Carus</span></a>
+    <nav class="menu">
+      <a href="#personagem">O personagem</a>
+      <a href="#obra">A obra</a>
+      <a href="#autor">O autor</a>
+      <a href="#perguntas">Perguntas</a>
+    </nav>
+    <a class="btn btn-1" data-checkout href="#">Comprar</a>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- ============ HERÓI ============ -->
+  <section class="heroi">
+    <div class="heroi-in">
+      <div>
+        <p class="rotulo">Lançamento · venda direta com o autor</p>
+        <p class="autor-capa">Nelson Carus</p>
+        <h1>Terapeuta <span class="l2">do Alegrete</span></h1>
+        <p class="gancho">Mais mentiroso que guri em porta de baile. E, mesmo assim, você vai torcer por ele.</p>
+        <p class="heroi-texto">Dinho é guasca, é esperto, é sem-vergonha. Nas histórias de Nelson Carus, ele vira espelho: em cada página você reconhece alguém — e, se for honesto, reconhece um pedaço de si.</p>
+        <div class="botoes">
+          <a class="btn btn-1" data-checkout href="#">Quero meu exemplar</a>
+          <a class="btn btn-2" data-whatsapp href="#">Falar com o autor</a>
+        </div>
+        <ul class="tres">
+          <li>Direto com o autor</li>
+          <li>Literatura gaúcha</li>
+          <li>Humor que morde e afaga</li>
+        </ul>
+      </div>
+      <div class="capa-caixa">
+        <img src="img/capa.jpg" alt="Capa do livro Terapeuta do Alegrete, de Nelson Carus: o personagem Dinho, em massinha, de guarda-pó branco sobre uma pilha de livros abertos." width="720" height="1016">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOTE ============ -->
+  <section class="mote">
+    <blockquote class="mote-frase">“Um <b>entrevero de vagabundos</b> consagrados da literatura nacional.”</blockquote>
+    <p class="mote-quem">Afonso Carus, sobre Dinho</p>
+  </section>
+
+  <!-- ============ O PERSONAGEM ============ -->
+  <section class="faixa claro" id="personagem">
+    <div class="env">
+      <div class="duas">
+        <div class="cabeca solta rev">
+          <p class="rotulo">O personagem</p>
+          <h2>Dinho não é mau.<br>É <span class="marca-sol">vadio com talento</span>.</h2>
+        </div>
+        <div class="prosa rev">
+          <p>Guasca carismático e muito inteligente, porém <strong>mais mentiroso que guri em porta de baile</strong>. O leitor, sem perceber, cria com ele uma dúbia relação de desprezo e carinho.</p>
+          <p>Apesar dos defeitos, Dinho não é uma figura essencialmente perversa: seus delitos decorrem da vadiagem e do gosto pela boa vida, e permanecem circunscritos à esfera patrimonial. É o malandro clássico — agora imortalizado na literatura gaúcha.</p>
+        </div>
+      </div>
+
+      <div class="grade g3">
+        <article class="cartao rev">
+          <h3>Ao modo de <span class="marca-sol">Macunaíma</span></h3>
+          <p>Recusa-se ao trabalho disciplinado e adere à astúcia improvisada. Se dá pra resolver na conversa, não se resolve no braço.</p>
+        </article>
+        <article class="cartao rev">
+          <h3>À maneira de <span class="marca-sol">João Grilo</span></h3>
+          <p>Faz da inteligência prática e da esperteza instrumentos para explorar oportunidades e evitar a demasia do esforço da lida.</p>
+        </article>
+        <article class="cartao rev">
+          <h3>Mais um naco de <span class="marca-sol">bagualismo</span></h3>
+          <p>Some tudo isso ao pampa, ao mate e ao causo bem contado — e terás Dinho, inteiro, de corpo e lábia.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAMADA 1 ============ -->
+  <section class="chamada">
+    <div class="chamada-in">
+      <div>
+        <h2>Comece a ler hoje</h2>
+        <p>O livro já está à venda, direto com o autor. Sem intermediário, sem espera de livraria.</p>
+      </div>
+      <div class="botoes">
+        <a class="btn btn-1" data-checkout href="#">Garantir meu exemplar</a>
+        <a class="btn btn-2" data-whatsapp href="#">Tirar uma dúvida</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A OBRA ============ -->
+  <section class="faixa claro-2" id="obra">
+    <div class="env">
+      <div class="duas">
+        <div class="cabeca solta rev">
+          <p class="rotulo">A obra</p>
+          <h2>A distância entre <span class="marca-sol">o que se pensa</span> e o que se faz</h2>
+        </div>
+        <div class="prosa rev">
+          <p>Esta obra, em forma de histórias, é uma imersão no comportamento humano: uma disputa entre a parte oculta do cérebro — onde os pensamentos fluem com ideias obscuras e intenções que se desconhecem — e a parte conhecida da mente, onde as pessoas visualizam o comportamento.</p>
+          <p>Nesse mundo entre intenção e ação, o personagem nos leva a divagar sobre o ser real e o imaginário. E mostra que <strong>sempre alguém busca alcançar um benefício</strong>, em situações diversas, independentemente de condições sociais. Essa maneira de agir está intrínseca na conduta do ser humano.</p>
+          <ul class="temas">
+            <li>Malandragem</li><li>Esperteza</li><li>Vaidade</li><li>Vantagem</li>
+            <li>Moral</li><li>Vínculos</li><li>Humor</li><li>Interior do RS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VOCÊ VAI SE RECONHECER ============ -->
+  <section class="faixa claro">
+    <div class="env">
+      <div class="cabeca rev">
+        <p class="rotulo">Por que este livro pega</p>
+        <h2>Você já viu <span class="marca-sol">essa cena</span> acontecer</h2>
+      </div>
+      <div class="prosa larga rev">
+        <p>Em cada história, o leitor percebe que já assistiu à situação relatada no livro. Com pessoas conhecidas ou desconhecidas, às vezes até com amigos ou familiares. Sempre tem aquele mais esperto — ou que se julga mais inteligente.</p>
+      </div>
+
+      <div class="fichas">
+        <article class="ficha rev"><span class="n">1</span><div>
+          <h3>Você vai rir alto</h3>
+          <p>A lábia do Dinho tem tempo de comédia. São histórias para ler em voz alta e contar no dia seguinte como se fossem suas.</p>
+        </div></article>
+        <article class="ficha rev"><span class="n">2</span><div>
+          <h3>Você vai reconhecer gente</h3>
+          <p>O tio que sempre some na hora da conta. O colega que trabalha mais para não trabalhar. Todos estão aqui, com outro nome.</p>
+        </div></article>
+        <article class="ficha rev"><span class="n">3</span><div>
+          <h3>Você vai se incomodar um pouco</h3>
+          <p>Porque em algum causo o esperto da história não é o outro. É você — e o livro não faz sermão nenhum sobre isso.</p>
+        </div></article>
+        <article class="ficha rev"><span class="n">4</span><div>
+          <h3>Você vai pensar depois</h3>
+          <p>O levar vantagem sem esforço está na natureza. Mudar esse comportamento exige disciplina e educação — só assim se constrói uma sociedade mais justa e humana.</p>
+        </div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAMADA 2 ============ -->
+  <section class="chamada sol">
+    <div class="chamada-in">
+      <div>
+        <h2>Uma crônica por noite</h2>
+        <p>É assim que a maioria lê: uma história antes de dormir, e o resto do dia contando ela pros outros.</p>
+      </div>
+      <div class="botoes">
+        <a class="btn btn-1" data-checkout href="#">Quero começar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARA QUEM ============ -->
+  <section class="faixa claro-2">
+    <div class="env">
+      <div class="cabeca rev">
+        <p class="rotulo">Antes de comprar</p>
+        <h2>Este livro é <span class="marca-sol">pra ti</span>?</h2>
+      </div>
+      <div class="listas">
+        <div class="rev">
+          <p class="rotulo">É pra ti se</p>
+          <ul class="lista sim">
+            <li><span class="mk">✓</span><span>Tu gostas de crônica curta, dessas de ler uma por noite e dormir sorrindo.</span></li>
+            <li><span class="mk">✓</span><span>Cresceste ouvindo causo de peão, de bolicho, de vizinho — e sabes que todo causo tem um exagero honesto dentro.</span></li>
+            <li><span class="mk">✓</span><span>Gostas de humor com observação fina, na linhagem de quem lê Érico Verissimo sem pressa.</span></li>
+            <li><span class="mk">✓</span><span>Queres um presente que agrada tanto o pai quanto o guri de vinte anos.</span></li>
+          </ul>
+        </div>
+        <div class="rev">
+          <p class="rotulo">Não é pra ti se</p>
+          <ul class="lista nao">
+            <li><span class="mk">✕</span><span>Procuras autoajuda, receita pronta ou lição de moral no fim do capítulo.</span></li>
+            <li><span class="mk">✕</span><span>Queres um herói impecável, desses que nunca mentem nem devem nada a ninguém.</span></li>
+            <li><span class="mk">✕</span><span>Não suportas rir de um sem-vergonha antes de julgá-lo.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ O QUE DIZEM ============ -->
+  <section class="faixa claro">
+    <div class="env">
+      <div class="cabeca rev">
+        <p class="rotulo">O que dizem</p>
+        <h2>Sobre a obra e o <span class="marca-sol">seu autor</span></h2>
+      </div>
+      <div class="grade g2" style="margin-top:2.2rem">
+        <article class="cartao rev">
+          <p style="font-size:1.08rem;color:var(--prosa)">“Dinho é um personagem único, por quem o leitor, sem perceber, criará uma dúbia relação de desprezo e carinho. Apesar de seus defeitos, não se trata de uma figura essencialmente perversa: seus delitos são decorrentes de sua vadiagem e gosto pela boa vida.”</p>
+          <p class="fonte">Afonso Carus</p>
+        </article>
+        <article class="cartao rev">
+          <p style="font-size:1.08rem;color:var(--prosa)">“Contar histórias tornou-se um hábito, e a literatura, uma consequência dessa escuta contínua do mundo. Seus textos refletem experiências vividas, observadas e sentidas.”</p>
+          <p class="fonte">Daphne Carús</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ O AUTOR ============ -->
+  <section class="faixa escuro" id="autor">
+    <div class="env autor-grade">
+      <figure class="autor-foto rev" style="margin:0">
+        <img src="img/autor.jpg" alt="Nelson Carus sentado em uma poltrona, lendo o livro, ao lado da escultura do personagem Dinho." width="1122" height="1402">
+        <figcaption>Nelson Carus e Dinho, o terapeuta do Alegrete</figcaption>
+      </figure>
+      <div class="rev">
+        <p class="rotulo">O autor</p>
+        <h2 style="margin:1.1rem 0 1.5rem">Médico por formação,<br><span class="marca-sol">escritor por vocação</span></h2>
+        <div class="prosa">
+          <p>Natural de Alegrete, no Rio Grande do Sul, Nelson Carús construiu uma carreira marcada pelo cuidado com o outro, pela escuta atenta e pela observação da condição humana — os mesmos elementos que atravessam a sua escrita.</p>
+          <p>Sempre foi um grande leitor. Adora os textos de Érico Verissimo, que fizeram parte da sua juventude, e cultivou o hábito da leitura entre os filhos: em casa, as histórias antes de dormir e as conversas cheias de relatos de vida sempre foram uma constância.</p>
+          <p>Ao longo dos anos, as histórias surgiram naturalmente — desde o episódio em que <strong>salvou a vida da própria mãe, aos sete anos de idade</strong>, até os relatos construídos a partir de mais de dez mil partos acompanhados. As histórias ouvidas nos consultórios, nos corredores dos hospitais e fora deles viraram matéria-prima destas crônicas, que transitam entre o humor, a observação aguçada e a reflexão sutil.</p>
+        </div>
+        <div class="numeros">
+          <div class="numero"><div class="v">Alegrete</div><div class="r">Rio Grande do Sul</div></div>
+          <div class="numero"><div class="v">+10.000</div><div class="r">partos acompanhados</div></div>
+          <div class="numero"><div class="v">7 anos</div><div class="r">idade da primeira história</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFERTA ============ -->
+  <section class="faixa oferta" id="comprar">
+    <div class="env">
+      <div class="oferta-caixa rev">
+        <p class="rotulo">Garanta o seu</p>
+        <h2 style="margin:1rem 0 2rem">Terapeuta do Alegrete</h2>
+        <div class="oferta-topo">
+          <div>
+            <div class="preco" data-preco>R$ 00,00</div>
+            <div class="preco-obs" data-parcelas>ou em até 3x sem juros no cartão</div>
+          </div>
+          <p class="ui" style="font-size:.86rem;color:var(--suave);max-width:20ch">Venda direta com o autor, sem intermediários.</p>
+        </div>
+        <ul class="inclui">
+          <li><span class="mk">→</span><span><strong>Exemplar impresso</strong> do livro <em>Terapeuta do Alegrete</em>, de Nelson Carus.</span></li>
+          <li><span class="mk">→</span><span><strong>Compra direta com o autor</strong> — o valor vai para quem escreveu.</span></li>
+          <li><span class="mk">→</span><span><strong data-envio>Envio para todo o Brasil</strong>, com acompanhamento pelo WhatsApp.</span></li>
+          <li><span class="mk">→</span><span><strong>Atendimento humano</strong> para dúvidas, dedicatória e pedidos em quantidade.</span></li>
+        </ul>
+        <div class="botoes">
+          <a class="btn btn-1" data-checkout href="#">Comprar agora</a>
+          <a class="btn btn-2" data-whatsapp href="#">Comprar pelo WhatsApp</a>
+        </div>
+        <p class="selo-btn" style="margin-top:1.2rem">Pagamento processado com segurança na página de checkout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PERGUNTAS ============ -->
+  <section class="faixa claro" id="perguntas">
+    <div class="env">
+      <div class="cabeca rev" style="margin-inline:auto;text-align:center;align-items:center">
+        <p class="rotulo">Perguntas</p>
+        <h2>O que costumam <span class="marca-sol">perguntar</span></h2>
+      </div>
+      <div class="perguntas">
+        <details>
+          <summary>Como faço para comprar?</summary>
+          <p>Clique em qualquer botão de compra desta página. Você será levado à página de checkout, onde escolhe a forma de pagamento e informa o endereço de entrega. Se preferir combinar tudo por conversa, chame no WhatsApp.</p>
+        </details>
+        <details>
+          <summary>O livro é impresso ou digital?</summary>
+          <p>Impresso. O exemplar é enviado até você — não é e-book.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo demora para chegar?</summary>
+          <p>O prazo aparece no checkout, calculado pelo seu CEP. Assim que o pedido é despachado, o código de rastreio é enviado para você.</p>
+        </details>
+        <details>
+          <summary>Dá para pedir uma dedicatória do autor?</summary>
+          <p>Sim, é só avisar. Chame no WhatsApp antes ou logo depois de finalizar a compra e diga o nome de quem vai receber.</p>
+        </details>
+        <details>
+          <summary>Quero vários exemplares para presentear ou para meu grupo. Como faço?</summary>
+          <p>Fale direto no WhatsApp. Pedidos em quantidade — para escolas, clubes, grupos de leitura e empresas — são combinados caso a caso com o autor.</p>
+        </details>
+        <details>
+          <summary>Quais formas de pagamento são aceitas?</summary>
+          <p>Cartão de crédito, Pix e boleto, conforme as opções disponíveis na página de checkout.</p>
+        </details>
+      </div>
+
+      <div class="botoes" style="justify-content:center;margin-top:3rem">
+        <a class="btn btn-1" data-checkout href="#">Quero meu exemplar</a>
+        <a class="btn btn-2" data-whatsapp href="#">Ainda tenho dúvida</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="rodape-in">
+    <div>
+      <div class="assinatura" style="margin-bottom:.6rem">Nelson <span>Carus</span></div>
+      <div><em>Terapeuta do Alegrete</em> · Venda direta com o autor</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.4rem">
+      <a data-whatsapp href="#">Falar no WhatsApp</a>
+      <a data-checkout href="#">Comprar o livro</a>
+    </div>
+  </div>
+</footer>
+
+<div class="barra" id="barra">
+  <div class="t"><b>Terapeuta do Alegrete</b><span data-preco>R$ 00,00</span> · direto com o autor</div>
+  <a class="btn btn-1" data-checkout href="#">Comprar</a>
+</div>
+
+<script>
+(function(){
+  var c = window.CONFIG || {};
+
+  // aplica o link de checkout
+  document.querySelectorAll("[data-checkout]").forEach(function(a){
+    a.setAttribute("href", c.checkout || "#");
+  });
+
+  // monta o link do WhatsApp
+  var zap = "https://wa.me/" + (c.whatsapp || "") + "?text=" + encodeURIComponent(c.whatsMsg || "");
+  document.querySelectorAll("[data-whatsapp]").forEach(function(a){
+    a.setAttribute("href", zap);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener");
+  });
+
+  // preço, parcelas e envio
+  document.querySelectorAll("[data-preco]").forEach(function(e){ if(c.preco) e.textContent = c.preco; });
+  document.querySelectorAll("[data-parcelas]").forEach(function(e){ if(c.parcelas) e.textContent = c.parcelas; });
+  document.querySelectorAll("[data-envio]").forEach(function(e){ if(c.envio) e.textContent = c.envio; });
+
+  // revelação suave ao rolar
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("vis"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: .12 });
+    document.querySelectorAll(".rev").forEach(function(el, i){
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + "ms";
+      io.observe(el);
+    });
+  } else {
+    document.querySelectorAll(".rev").forEach(function(el){ el.classList.add("vis"); });
+  }
+
+  // barra fixa no celular: aparece depois do herói, some na seção de compra
+  var barra = document.getElementById("barra");
+  var compra = document.getElementById("comprar");
+  window.addEventListener("scroll", function(){
+    var passou = window.scrollY > window.innerHeight * .85;
+    var naCompra = compra && compra.getBoundingClientRect().top < window.innerHeight;
+    barra.classList.toggle("ver", passou && !naCompra);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
