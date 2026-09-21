@@ -377,8 +377,8 @@ details p{padding:0 2.5rem 1.4rem 0;color:var(--suave);max-width:60ch}
 <script>
 window.CONFIG = {
   checkout:  "#COLE-AQUI-O-LINK-DO-CHECKOUT",
-  whatsapp:  "5555000000000",                    // só números, com 55 na frente
-  whatsMsg:  "Olá! Quero saber sobre o livro Terapeuta do Alegrete.",
+  whatsapp:  "5555999060004",                    // (55) 99906-0004 — só números, com 55 do Brasil na frente
+  whatsMsg:  "Olá! Vim pelo site do Terapeuta do Alegrete e quero falar sobre o livro.",
   preco:     "R$ 00,00",
   parcelas:  "ou em até 3x sem juros no cartão",
   envio:     "Envio para todo o Brasil"
@@ -412,7 +412,7 @@ window.CONFIG = {
         <p class="heroi-texto">Dinho é guasca, é esperto, é sem-vergonha. Nas histórias de Nelson Carus, ele vira espelho: em cada página você reconhece alguém — e, se for honesto, reconhece um pedaço de si.</p>
         <div class="botoes">
           <a class="btn btn-1" data-checkout href="#">Quero meu exemplar</a>
-          <a class="btn btn-2" data-whatsapp href="#">Falar com o autor</a>
+          <a class="btn btn-2" data-whatsapp="Olá! Vim pelo site do Terapeuta do Alegrete e queria falar com o autor." href="#">Falar com o autor</a>
         </div>
         <ul class="tres">
           <li>Direto com o autor</li>
@@ -472,7 +472,7 @@ window.CONFIG = {
       </div>
       <div class="botoes">
         <a class="btn btn-1" data-checkout href="#">Garantir meu exemplar</a>
-        <a class="btn btn-2" data-whatsapp href="#">Tirar uma dúvida</a>
+        <a class="btn btn-2" data-whatsapp="Olá! Vim pelo site do Terapeuta do Alegrete e fiquei com uma dúvida sobre o livro." href="#">Tirar uma dúvida</a>
       </div>
     </div>
   </section>
@@ -636,7 +636,7 @@ window.CONFIG = {
         </ul>
         <div class="botoes">
           <a class="btn btn-1" data-checkout href="#">Comprar agora</a>
-          <a class="btn btn-2" data-whatsapp href="#">Comprar pelo WhatsApp</a>
+          <a class="btn btn-2" data-whatsapp="Olá! Vim pelo site do Terapeuta do Alegrete e quero comprar um exemplar pelo WhatsApp." href="#">Comprar pelo WhatsApp</a>
         </div>
         <p class="selo-btn" style="margin-top:1.2rem">Pagamento processado com segurança na página de checkout.</p>
       </div>
@@ -679,7 +679,7 @@ window.CONFIG = {
 
       <div class="botoes" style="justify-content:center;margin-top:3rem">
         <a class="btn btn-1" data-checkout href="#">Quero meu exemplar</a>
-        <a class="btn btn-2" data-whatsapp href="#">Ainda tenho dúvida</a>
+        <a class="btn btn-2" data-whatsapp="Olá! Vim pelo site do Terapeuta do Alegrete, li as perguntas frequentes e ainda fiquei com uma dúvida." href="#">Ainda tenho dúvida</a>
       </div>
     </div>
   </section>
@@ -693,7 +693,7 @@ window.CONFIG = {
       <div><em>Terapeuta do Alegrete</em> · Venda direta com o autor</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:.4rem">
-      <a data-whatsapp href="#">Falar no WhatsApp</a>
+      <a data-whatsapp="Olá! Vim pelo site do Terapeuta do Alegrete." href="#">Falar no WhatsApp</a>
       <a data-checkout href="#">Comprar o livro</a>
     </div>
   </div>
@@ -714,9 +714,9 @@ window.CONFIG = {
   });
 
   // monta o link do WhatsApp
-  var zap = "https://wa.me/" + (c.whatsapp || "") + "?text=" + encodeURIComponent(c.whatsMsg || "");
   document.querySelectorAll("[data-whatsapp]").forEach(function(a){
-    a.setAttribute("href", zap);
+    var msg = a.getAttribute("data-whatsapp") || c.whatsMsg || "";
+    a.setAttribute("href", "https://wa.me/" + (c.whatsapp || "") + "?text=" + encodeURIComponent(msg));
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener");
   });
