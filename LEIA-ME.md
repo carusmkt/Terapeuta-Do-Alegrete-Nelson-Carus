@@ -18,9 +18,10 @@ window.CONFIG = {
   checkout:  "#COLE-AQUI-O-LINK-DO-CHECKOUT",   // link da página de pagamento
   whatsapp:  "5555999060004",                   // (55) 99906-0004 — já configurado
   whatsMsg:  "Olá! Vim pelo site do Terapeuta do Alegrete e quero falar sobre o livro.",
-  preco:     "R$ 00,00",
-  parcelas:  "ou em até 3x sem juros no cartão",
-  envio:     "Envio para todo o Brasil"
+  preco:     "R$ 51,47",
+  precoObs:  "Frete já incluso no preço",     // linha pequena embaixo do preço
+  envio:     "Envio para todo o Brasil, com frete incluso",
+  outrosLivros: "outros-livros.html"          // página com os demais títulos do autor
 };
 ```
 
@@ -46,6 +47,13 @@ Para mudar o texto de um botão específico, procure no `index.html` por
 `data-whatsapp="..."` e edite o que está entre aspas. Um botão sem texto próprio
 usa o `whatsMsg` do bloco de configuração.
 
+## A página dos outros títulos
+
+O bloco "Do mesmo autor", entre a oferta e as perguntas, tem um botão apontando
+para `outros-livros.html`. **Essa página ainda não existe** — enquanto não for
+criada, o botão leva a um erro 404. Para apontar para outro endereço, troque o
+valor de `outrosLivros` no bloco de configuração.
+
 ## Como publicar
 
 Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
@@ -58,8 +66,9 @@ Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
 
 - [ ] Link de checkout colado e testado
 - [x] Número de WhatsApp: (55) 99906-0004 — configurado
-- [ ] Preço e parcelamento conferidos
+- [x] Preço: R$ 51,47 com frete incluso — configurado
 - [ ] Texto do FAQ bate com a realidade do envio, prazo e formas de pagamento
+- [ ] Página `outros-livros.html` criada (senão o botão "Ver todos os títulos" dá 404)
 
 ## Textos que dependem de informação que ainda não confirmamos
 

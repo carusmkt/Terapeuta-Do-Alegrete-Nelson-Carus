@@ -327,6 +327,17 @@ strong{font-weight:600;color:var(--tinta)}
 .oferta .botoes{gap:1rem}
 .oferta .btn{flex:1 1 auto;min-width:16rem}
 
+/* ---------- outros títulos ---------- */
+.estante{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:880px){.estante{grid-template-columns:1fr;gap:2rem}}
+.h2-estante{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:1.1rem 0 1.4rem}
+.estante-foto{margin:0;position:relative}
+.estante-foto img{width:100%;border:1px solid rgba(244,236,220,.16);box-shadow:0 30px 60px -28px rgba(0,0,0,.9)}
+.titulos{list-style:none;padding:0;margin:1.6rem 0 2rem;display:flex;flex-direction:column;gap:.7rem}
+.titulos li{display:flex;gap:.8rem;align-items:baseline;font-size:1.05rem;color:#C4BAA8}
+.titulos .mk{color:var(--sol);font-family:"Archivo",sans-serif;font-weight:700;flex:none}
+.titulos cite{font-style:italic;color:var(--osso)}
+
 /* ---------- perguntas ---------- */
 .perguntas{max-width:44rem;margin:2.6rem auto 0;border-top:1px solid var(--linha)}
 details{border-bottom:1px solid var(--linha)}
@@ -379,9 +390,10 @@ window.CONFIG = {
   checkout:  "#COLE-AQUI-O-LINK-DO-CHECKOUT",
   whatsapp:  "5555999060004",                    // (55) 99906-0004 — só números, com 55 do Brasil na frente
   whatsMsg:  "Olá! Vim pelo site do Terapeuta do Alegrete e quero falar sobre o livro.",
-  preco:     "R$ 00,00",
-  parcelas:  "ou em até 3x sem juros no cartão",
-  envio:     "Envio para todo o Brasil"
+  preco:     "R$ 51,47",
+  precoObs:  "Frete já incluso no preço",     // linha pequena embaixo do preço
+  envio:     "Envio para todo o Brasil, com frete incluso",
+  outrosLivros: "outros-livros.html"          // página com os demais títulos do autor
 };
 </script>
 <!-- ===================================================================== -->
@@ -595,8 +607,8 @@ window.CONFIG = {
   <section class="faixa escuro" id="autor">
     <div class="env autor-grade">
       <figure class="autor-foto rev" style="margin:0">
-        <img src="img/autor.jpg" alt="Nelson Carus sentado em uma poltrona, lendo o livro, ao lado da escultura do personagem Dinho." width="1122" height="1402">
-        <figcaption>Nelson Carus e Dinho, o terapeuta do Alegrete</figcaption>
+        <img src="img/autor.jpg" alt="Nelson Carus atravessando a tela de um notebook, segurando um exemplar do livro Terapeuta do Alegrete." width="975" height="1300">
+        <figcaption>Nelson Carus e o Terapeuta do Alegrete</figcaption>
       </figure>
       <div class="rev">
         <p class="rotulo">O autor</p>
@@ -624,14 +636,14 @@ window.CONFIG = {
         <div class="oferta-topo">
           <div>
             <div class="preco" data-preco>R$ 00,00</div>
-            <div class="preco-obs" data-parcelas>ou em até 3x sem juros no cartão</div>
+            <div class="preco-obs" data-preco-obs>Frete já incluso no preço</div>
           </div>
           <p class="ui" style="font-size:.86rem;color:var(--suave);max-width:20ch">Venda direta com o autor, sem intermediários.</p>
         </div>
         <ul class="inclui">
           <li><span class="mk">→</span><span><strong>Exemplar impresso</strong> do livro <em>Terapeuta do Alegrete</em>, de Nelson Carus.</span></li>
           <li><span class="mk">→</span><span><strong>Compra direta com o autor</strong> — o valor vai para quem escreveu.</span></li>
-          <li><span class="mk">→</span><span><strong data-envio>Envio para todo o Brasil</strong>, com acompanhamento pelo WhatsApp.</span></li>
+          <li><span class="mk">→</span><span><strong data-envio>Envio para todo o Brasil, com frete incluso</strong> — o preço acima é o que você paga.</span></li>
           <li><span class="mk">→</span><span><strong>Atendimento humano</strong> para dúvidas, dedicatória e pedidos em quantidade.</span></li>
         </ul>
         <div class="botoes">
@@ -639,6 +651,31 @@ window.CONFIG = {
           <a class="btn btn-2" data-whatsapp="Olá! Vim pelo site do Terapeuta do Alegrete e quero comprar um exemplar pelo WhatsApp." href="#">Comprar pelo WhatsApp</a>
         </div>
         <p class="selo-btn" style="margin-top:1.2rem">Pagamento processado com segurança na página de checkout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OUTROS TÍTULOS ============ -->
+  <section class="faixa escuro" id="outros-titulos">
+    <div class="env estante">
+      <figure class="estante-foto rev">
+        <img src="img/outros-livros.jpg" alt="Quatro livros de Nelson Carús lado a lado numa prateleira de madeira iluminada." width="1400" height="1050">
+      </figure>
+      <div class="rev">
+        <p class="rotulo">Do mesmo autor</p>
+        <h2 class="h2-estante">Conheça os outros títulos de <span class="marca-sol">Nelson Carús</span></h2>
+        <div class="prosa">
+          <p>O Terapeuta do Alegrete não é o primeiro. Antes dele vieram outros quatro.</p>
+        </div>
+        <ul class="titulos">
+          <li><span class="mk">→</span><cite>Entre a vida e a morte: um médico em tempos de pandemia e de guerra</cite></li>
+          <li><span class="mk">→</span><cite>Na espreita da morte</cite></li>
+          <li><span class="mk">→</span><cite>Um sonho além da vida</cite></li>
+          <li><span class="mk">→</span><cite>Crônicas, contos e histórias do Rio Grande do Sul</cite></li>
+        </ul>
+        <div class="botoes">
+          <a class="btn btn-1" data-outros href="#">Ver todos os títulos</a>
+        </div>
       </div>
     </div>
   </section>
@@ -700,7 +737,7 @@ window.CONFIG = {
 </footer>
 
 <div class="barra" id="barra">
-  <div class="t"><b>Terapeuta do Alegrete</b><span data-preco>R$ 00,00</span> · direto com o autor</div>
+  <div class="t"><b>Terapeuta do Alegrete</b><span data-preco>R$ 51,47</span> · frete incluso</div>
   <a class="btn btn-1" data-checkout href="#">Comprar</a>
 </div>
 
@@ -721,9 +758,14 @@ window.CONFIG = {
     a.setAttribute("rel", "noopener");
   });
 
-  // preço, parcelas e envio
+  // preço, observação do preço e envio
   document.querySelectorAll("[data-preco]").forEach(function(e){ if(c.preco) e.textContent = c.preco; });
-  document.querySelectorAll("[data-parcelas]").forEach(function(e){ if(c.parcelas) e.textContent = c.parcelas; });
+  document.querySelectorAll("[data-preco-obs]").forEach(function(e){ if(c.precoObs) e.textContent = c.precoObs; });
+
+  // página dos outros títulos
+  document.querySelectorAll("[data-outros]").forEach(function(a){
+    a.setAttribute("href", c.outrosLivros || "#");
+  });
   document.querySelectorAll("[data-envio]").forEach(function(e){ if(c.envio) e.textContent = c.envio; });
 
   // revelação suave ao rolar
