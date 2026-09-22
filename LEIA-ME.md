@@ -3,10 +3,17 @@
 Página estática, autocontida. Não depende de servidor, banco nem build.
 
 ```
-index.html      ← a página inteira (HTML + CSS + JS num arquivo só)
-img/capa.jpg    ← capa do livro
-img/autor.jpg   ← Nelson Carus com o personagem
+index.html            ← a página de vendas do Terapeuta do Alegrete
+outros-livros.html    ← a página com todos os livros do autor
+img/capa.jpg          ← capa do Terapeuta do Alegrete
+img/autor.jpg         ← Nelson Carús com o personagem
+img/outros-livros.jpg ← os livros na prateleira
+img/livro-*.jpg       ← a capa de cada um dos quatro livros anteriores
+img/combo-cinco-livros.jpg ← os cinco livros em leque (bloco do combo)
 ```
+
+Cada arquivo `.html` carrega tudo dentro de si (HTML + CSS + JS). Os dois têm o
+mesmo visual e cada um tem o seu próprio bloco de configuração no começo.
 
 ## Como colocar o link de checkout
 
@@ -47,12 +54,65 @@ Para mudar o texto de um botão específico, procure no `index.html` por
 `data-whatsapp="..."` e edite o que está entre aspas. Um botão sem texto próprio
 usa o `whatsMsg` do bloco de configuração.
 
-## A página dos outros títulos
+## A página dos outros títulos — `outros-livros.html`
 
-O bloco "Do mesmo autor", entre a oferta e as perguntas, tem um botão apontando
-para `outros-livros.html`. **Essa página ainda não existe** — enquanto não for
-criada, o botão leva a um erro 404. Para apontar para outro endereço, troque o
-valor de `outrosLivros` no bloco de configuração.
+O bloco "Do mesmo autor", entre a oferta e as perguntas, leva para essa página.
+Ela apresenta os quatro livros anteriores na ordem em que foram escritos, depois
+o Terapeuta do Alegrete como livro 05, e termina no **combo**.
+
+### As cores
+
+A base é a paleta enviada — Prussian Blue, Twilight Indigo, Faded Copper,
+Coffee Bean e Apricot Cream. Por cima dela, **cada livro pinta o seu próprio
+bloco com as cores da sua capa**:
+
+| Livro | Fundo | Cor de destaque |
+|---|---|---|
+| Entre a vida e a morte | creme quente | rosa-antigo da ilustração |
+| Na espreita da morte | cinza-pedra | o azul do vidro |
+| Um sonho além da vida | marinho profundo | o vermelho do coração |
+| Crônicas, contos e histórias | azul claro | o azul do círculo |
+| Terapeuta do Alegrete | marinho | o dourado da capa |
+
+Isso está logo no começo do `<style>`, num bloco chamado **UM BLOCO POR LIVRO** —
+uma linha por livro. Para mudar a cor de um livro, mexe só na linha dele.
+
+### O bloco de configuração
+
+```js
+window.CONFIG = {
+  precoLivro:    "",              // o preço, igual para os quatro
+  precoObs:      "Frete incluso",
+  precoCombo:    "",              // o preço do combo com os cinco
+  comboObs:      "Os cinco livros, frete incluso",
+  comboCheckout: "",              // link de pagamento do combo
+  ...
+  livros: {
+    "entre-a-vida-e-a-morte": { checkout: "" },
+    "na-espreita-da-morte":   { checkout: "" },
+    "um-sonho-alem-da-vida":  { checkout: "" },
+    "cronicas-contos":        { checkout: "" }
+  }
+};
+```
+
+O preço é **um só para os quatro livros** — escreve uma vez em `precoLivro` e ele
+aparece nos quatro blocos. O combo tem o seu próprio preço em `precoCombo`.
+
+A página funciona com tudo vazio e vai ficando completa conforme você preenche:
+
+| Campo | Vazio | Preenchido |
+|---|---|---|
+| `precoLivro` / `precoCombo` | o preço nem aparece | aparece acima dos botões |
+| `checkout` / `comboCheckout` | o botão cai no WhatsApp, com o nome do livro já na mensagem | o botão leva direto para o pagamento |
+
+**Nenhum botão fica morto em nenhum momento.** Enquanto o link de checkout não
+estiver lá, ele abre o WhatsApp; assim que você colar o link, vira compra direta.
+
+### O combo
+
+O bloco final vende os cinco juntos: *na compra de quatro livros, o quinto é por
+nossa conta*. A foto é a dos cinco em leque. O botão usa `comboCheckout`.
 
 ## Como publicar
 
@@ -68,7 +128,12 @@ Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
 - [x] Número de WhatsApp: (55) 99906-0004 — configurado
 - [x] Preço: R$ 51,47 com frete incluso — configurado
 - [ ] Texto do FAQ bate com a realidade do envio, prazo e formas de pagamento
-- [ ] Página `outros-livros.html` criada (senão o botão "Ver todos os títulos" dá 404)
+- [x] Página `outros-livros.html` criada
+- [x] Resumo dos quatro livros — textos enviados pela autoria
+- [x] Capas dos quatro livros e foto do combo na pasta `img/`
+- [ ] `precoLivro` e `precoCombo` preenchidos
+- [ ] Link de checkout dos quatro livros e do combo
+- [x] Nome grafado **Carús** nas duas páginas
 
 ## Textos que dependem de informação que ainda não confirmamos
 
@@ -78,3 +143,6 @@ Estes trechos estão escritos de forma genérica de propósito — revise antes 
 - FAQ "Quais formas de pagamento são aceitas?" — cartão, Pix e boleto
 - FAQ "Dá para pedir uma dedicatória do autor?" — confirmar se o autor faz
 - Bloco da oferta: "Envio para todo o Brasil"
+- `outros-livros.html`, livro 03: a frase de abertura *"Até onde pode ir um
+  sonho?"* foi escrita por mim a partir do texto enviado — os outros três livros
+  abrem com a pergunta que veio no texto original.
