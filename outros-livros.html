@@ -9,7 +9,7 @@
 <meta property="og:description" content="Cinco livros sobre a vida, a morte, o tempo e os vínculos humanos. Na compra de quatro, o quinto é por nossa conta.">
 <meta property="og:image" content="img/combo-cinco-livros.jpg">
 <meta property="og:type" content="website">
-<link rel="icon" href="img/capa.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cstyle%3E.f%7Bfill%3A%23172841%7D.l%7Bfill%3A%23EBC18F%7D%40media%20%28prefers-color-scheme%3Adark%29%7B.f%7Bfill%3A%23EBC18F%7D.l%7Bfill%3A%23172841%7D%7D%3C%2Fstyle%3E%3Crect%20class%3D%22f%22%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2213%22%2F%3E%3Ctext%20class%3D%22l%22%20x%3D%2232%22%20y%3D%2244%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%20Neue%2CHelvetica%2CArial%2Csans-serif%22%20font-size%3D%2231%22%20font-weight%3D%22700%22%20letter-spacing%3D%22-1.5%22%3ENC%3C%2Ftext%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap">
@@ -115,16 +115,75 @@ em{font-style:italic}
 .botoes{display:flex;flex-wrap:wrap;gap:.9rem 1rem;align-items:center}
 .selo-btn{font-family:"Archivo",system-ui,sans-serif;font-size:.78rem;letter-spacing:.03em;color:var(--suave)}
 
-/* ---------- topo ---------- */
-.topo{position:sticky;top:0;z-index:50;background:rgba(247,241,232,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+/* ============================================================
+   TOPO CAMALEÃO
+   O cabeçalho assume a cor da seção que está imediatamente
+   atrás dele, e o "Carús" e o botão assumem a cor de destaque
+   daquela seção — a mesma cor do botão de compra do livro.
+   Quem define esses valores é cada seção, logo abaixo.
+   ============================================================ */
+.topo{
+  position:sticky;top:0;z-index:50;
+  /* valores iniciais: os do herói, para não piscar ao carregar */
+  --topo-bg:#1B2C48;
+  --topo-nome:#F7F1E8;
+  --topo-menu:#A8B3C4;
+  --topo-acento:#EBC18F;
+  --topo-btn-texto:#172841;
+  --topo-linha:rgba(235,193,143,.18);
+  background:var(--topo-bg);
+  border-bottom:1px solid var(--topo-linha);
+  transition:background-color .4s ease, border-color .4s ease;
+}
 .topo-in{max-width:var(--max);margin-inline:auto;display:flex;align-items:center;gap:1.6rem;padding:.75rem 1.4rem}
 .assinatura{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;font-size:1.02rem;letter-spacing:.04em;color:var(--tinta);text-decoration:none;line-height:1}
 .assinatura span{color:var(--cobre)}
+.topo .assinatura{color:var(--topo-nome);transition:color .4s ease}
+.topo .assinatura span{color:var(--topo-acento);transition:color .4s ease}
 .menu{display:flex;gap:1.5rem;margin-left:auto;font-family:"Archivo",system-ui,sans-serif;font-size:.85rem;font-weight:600}
-.menu a{text-decoration:none;color:var(--prosa);padding-block:.2rem;border-bottom:2px solid transparent}
-.menu a:hover{color:var(--tinta);border-color:var(--cobre)}
-.topo .btn{padding:.6rem 1.15rem;font-size:.82rem;box-shadow:3px 3px 0 rgba(23,40,65,.16)}
+.menu a{text-decoration:none;color:var(--topo-menu);padding-block:.2rem;border-bottom:2px solid transparent;transition:color .4s ease,border-color .2s ease}
+.menu a:hover{color:var(--topo-nome);border-color:var(--topo-acento)}
+.topo .btn{
+  padding:.6rem 1.15rem;font-size:.82rem;
+  --acento:var(--topo-acento);
+  --acento-texto:var(--topo-btn-texto);
+  box-shadow:3px 3px 0 rgba(0,0,0,.2);
+  transition:background-color .4s ease, border-color .4s ease, color .4s ease, transform .16s ease, box-shadow .16s ease;
+}
 @media (max-width:900px){.menu{display:none}.topo .btn{margin-left:auto}}
+@media (prefers-reduced-motion: reduce){
+  .topo,.topo .assinatura,.topo .assinatura span,.menu a,.topo .btn{transition:none}
+}
+
+/* --- cada seção diz ao topo de que cor ele deve ficar --- */
+[data-topo]{
+  --topo-bg:var(--papel);
+  --topo-nome:var(--tinta);
+  --topo-menu:var(--prosa);
+  --topo-acento:var(--cobre);
+  --topo-btn-texto:#FFF;
+  --topo-linha:var(--linha);
+}
+/* os cinco livros reaproveitam as cores que já declararam */
+.livro[data-topo]{
+  --topo-bg:var(--fundo);
+  --topo-nome:var(--titulo);
+  --topo-menu:var(--texto);
+  --topo-acento:var(--acento);
+  --topo-btn-texto:var(--acento-texto);
+  --topo-linha:var(--borda);
+}
+.heroi[data-topo],.combo[data-topo],.rodape[data-topo]{
+  --topo-nome:var(--papel);
+  --topo-menu:#A8B3C4;
+  --topo-acento:var(--damasco);
+  --topo-btn-texto:var(--noite);
+  --topo-linha:rgba(235,193,143,.18);
+}
+.heroi[data-topo]{--topo-bg:#1B2C48}
+.combo[data-topo]{--topo-bg:#1A2D4A}
+.rodape[data-topo]{--topo-bg:var(--noite);--topo-menu:#8B95A6}
+.abertura[data-topo],.autor[data-topo]{--topo-bg:var(--papel-2)}
 
 /* ---------- herói ---------- */
 .heroi{
@@ -143,7 +202,7 @@ em{font-style:italic}
 .voltar{font-family:"Archivo",system-ui,sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.03em;color:#9AA6B8;text-decoration:none;display:inline-flex;gap:.5rem;margin-bottom:1.5rem}
 .voltar:hover{color:var(--damasco)}
 .foto-estante{margin:0}
-.foto-estante img{width:100%;border:1px solid rgba(235,193,143,.2);box-shadow:0 34px 70px -24px rgba(0,0,0,.85)}
+.foto-estante img{width:100%;border-radius:5px;border:1px solid rgba(235,193,143,.2);box-shadow:0 34px 70px -24px rgba(0,0,0,.85)}
 
 /* ---------- abertura da lista ---------- */
 .abertura{background:var(--papel-2);border-bottom:1px solid var(--linha)}
@@ -179,7 +238,7 @@ em{font-style:italic}
   .livro:nth-of-type(even) .livro-capa{order:0}
 }
 .livro-capa{margin:0;justify-self:center;width:100%;max-width:340px}
-.livro-capa img{width:100%;border-radius:2px;box-shadow:0 26px 50px -22px rgba(16,28,46,.55)}
+.livro-capa img{width:100%;border-radius:5px;box-shadow:0 26px 50px -22px rgba(16,28,46,.55)}
 .livro .rotulo{color:var(--acento)}
 .livro-txt{display:flex;flex-direction:column;gap:1rem}
 .livro-txt h2{
@@ -230,7 +289,7 @@ em{font-style:italic}
 .combo h2 .grifo{color:var(--damasco)}
 .combo-frase{font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.38;color:var(--papel);font-weight:500;max-width:28ch;margin-bottom:1.4rem}
 .combo-foto{margin:0}
-.combo-foto img{width:100%;border-radius:2px;box-shadow:0 36px 70px -26px rgba(0,0,0,.9)}
+.combo-foto img{width:100%;border-radius:5px;box-shadow:0 36px 70px -26px rgba(0,0,0,.9)}
 .combo .inclui{list-style:none;padding:0;margin:0 0 1.8rem;display:grid;gap:.7rem;max-width:34rem}
 .combo .inclui li{display:flex;gap:.8rem;align-items:flex-start;font-size:1.04rem;color:#BAC4D3}
 .combo .inclui .mk{color:var(--damasco);font-family:"Archivo",sans-serif;font-weight:700;flex:none}
@@ -244,7 +303,7 @@ em{font-style:italic}
 .autor-in{max-width:var(--max);margin-inline:auto;display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(2rem,5vw,4rem);align-items:center}
 @media (max-width:880px){.autor-in{grid-template-columns:1fr}}
 .autor-foto{margin:0}
-.autor-foto img{width:100%;border:1px solid var(--linha);box-shadow:0 22px 44px -24px rgba(16,28,46,.5)}
+.autor-foto img{width:100%;border-radius:5px;border:1px solid var(--linha);box-shadow:0 22px 44px -24px rgba(16,28,46,.5)}
 .autor-foto figcaption{margin-top:.8rem;font-family:"Archivo",sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
 .autor h2{font-family:"Anton",Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:.98;margin:1.1rem 0 1.3rem}
 .autor h2 .grifo{color:var(--cobre)}
@@ -274,10 +333,26 @@ em{font-style:italic}
 @media (max-width:820px){.barra{display:flex}}
 @media (prefers-reduced-motion: reduce){.barra{transition:none}}
 
-/* ---------- revelação ---------- */
-.rev{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.rev.vis{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:none;transition:none}}
+/* ============================================================
+   ENTRADA DOS TÍTULOS
+   Só os rótulos e os títulos animam. As fotos, os textos e os
+   botões aparecem parados, para a página não ficar agitada.
+   ============================================================ */
+.entra{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1);
+}
+.entra.vis{opacity:1;transform:none}
+.entra.atraso{transition-delay:.13s}
+
+/* o risquinho do rótulo se desenha da esquerda para a direita */
+.rotulo.entra::before{transform:scaleX(0);transform-origin:left center;transition:transform .6s cubic-bezier(.22,.61,.36,1) .08s}
+.rotulo.entra.vis::before{transform:scaleX(1)}
+
+@media (prefers-reduced-motion: reduce){
+  .entra,.entra.atraso{opacity:1;transform:none;transition:none}
+  .rotulo.entra::before{transform:none;transition:none}
+}
 </style>
 </head>
 <body>
@@ -332,12 +407,12 @@ window.CONFIG = {
 <main id="topo">
 
   <!-- ============ HERÓI ============ -->
-  <section class="heroi">
+  <section class="heroi" data-topo>
     <div class="heroi-in">
       <div>
         <a class="voltar" data-terapeuta href="index.html">&larr; Voltar para o Terapeuta do Alegrete</a>
-        <p class="rotulo">A obra de Nelson Carús</p>
-        <h1>Cinco <span class="l2">livros</span></h1>
+        <p class="rotulo entra">A obra de Nelson Carús</p>
+        <h1 class="entra atraso">Cinco <span class="l2">livros</span></h1>
         <p class="gancho">Um médico de Alegrete que passou a vida perto do começo e do fim das histórias &mdash; e resolveu escrevê-las.</p>
         <p class="heroi-texto">A guerra, a mente humana, um sonho que atravessa a existência e as histórias do Rio Grande do Sul. Quatro livros antes do Terapeuta do Alegrete &mdash; e uma condição: levando quatro, o quinto é por nossa conta.</p>
         <div class="botoes">
@@ -352,11 +427,11 @@ window.CONFIG = {
   </section>
 
   <!-- ============ ABERTURA ============ -->
-  <section class="faixa abertura" id="livros">
+  <section class="faixa abertura" id="livros" data-topo>
     <div class="env">
       <div>
-        <p class="rotulo">Na ordem em que foram escritos</p>
-        <h2 class="h-anton" style="margin-top:1rem">Os quatro que<br>vieram antes</h2>
+        <p class="rotulo entra">Na ordem em que foram escritos</p>
+        <h2 class="h-anton entra atraso" style="margin-top:1rem">Os quatro que<br>vieram antes</h2>
       </div>
       <div class="prosa">
         <p>Cada um nasceu de um lugar diferente: um arquivo de família, uma vida inteira de consultório, uma viagem pela mitologia e pela filosofia, um caderno de causos guardados por décadas.</p>
@@ -366,14 +441,14 @@ window.CONFIG = {
   </section>
 
   <!-- ============ 01 ============ -->
-  <article class="livro rev" id="entre-a-vida" data-livro="entre-a-vida-e-a-morte">
+  <article class="livro" id="entre-a-vida" data-topo data-livro="entre-a-vida-e-a-morte">
     <div class="livro-in">
       <figure class="livro-capa">
         <img src="img/livro-entre-a-vida-e-a-morte.jpg" alt="Capa do livro Entre a vida e a morte: um médico em tempos de pandemia e de guerra, de Nelson Carús." width="900" height="1124">
       </figure>
       <div class="livro-txt">
-        <p class="rotulo">Livro 01</p>
-        <h2>Entre a vida e a morte</h2>
+        <p class="rotulo entra">Livro 01</p>
+        <h2 class="entra atraso">Entre a vida e a morte</h2>
         <p class="sub">um médico em tempos de pandemia e de guerra</p>
         <p class="chamariz">Em meio à guerra, à doença e à incerteza, até onde alguém é capaz de ir para salvar uma vida?</p>
         <div class="prosa">
@@ -394,14 +469,14 @@ window.CONFIG = {
   </article>
 
   <!-- ============ 02 ============ -->
-  <article class="livro rev" id="na-espreita" data-livro="na-espreita-da-morte">
+  <article class="livro" id="na-espreita" data-topo data-livro="na-espreita-da-morte">
     <div class="livro-in">
       <figure class="livro-capa">
         <img src="img/livro-na-espreita-da-morte.jpg" alt="Capa do livro Na espreita da morte, de Nelson Carús." width="900" height="1124">
       </figure>
       <div class="livro-txt">
-        <p class="rotulo">Livro 02</p>
-        <h2>Na espreita da morte</h2>
+        <p class="rotulo entra">Livro 02</p>
+        <h2 class="entra atraso">Na espreita da morte</h2>
         <p class="chamariz">Até onde a mente humana pode levar alguém quando medo, angústia, obsessões e interesses começam a ultrapassar os limites da razão?</p>
         <div class="prosa">
           <p>Nelson Carús conduz o leitor pelos caminhos mais obscuros e imprevisíveis do comportamento humano, revelando um universo marcado por tramas, falsidades, traições, manipulações e decisões capazes de transformar profundamente a vida de outras pessoas.</p>
@@ -421,14 +496,14 @@ window.CONFIG = {
   </article>
 
   <!-- ============ 03 ============ -->
-  <article class="livro rev" id="um-sonho" data-livro="um-sonho-alem-da-vida">
+  <article class="livro" id="um-sonho" data-topo data-livro="um-sonho-alem-da-vida">
     <div class="livro-in">
       <figure class="livro-capa">
         <img src="img/livro-um-sonho-alem-da-vida.jpg" alt="Capa do livro Um sonho além da vida, de Nelson Carús." width="900" height="1124">
       </figure>
       <div class="livro-txt">
-        <p class="rotulo">Livro 03</p>
-        <h2>Um sonho além da vida</h2>
+        <p class="rotulo entra">Livro 03</p>
+        <h2 class="entra atraso">Um sonho além da vida</h2>
         <p class="chamariz">Até onde pode ir um sonho?</p>
         <div class="prosa">
           <p>Esta obra nos conduz a um mundo de ficção onde o autor habilmente tece cada capítulo com as cores de um romance. Ao adentrar suas páginas, somos convidados a uma emocionante jornada pela mitologia grega, a desvendar os enigmas da filosofia e a embarcar rumo à rica história de Portugal.</p>
@@ -447,14 +522,14 @@ window.CONFIG = {
   </article>
 
   <!-- ============ 04 ============ -->
-  <article class="livro rev" id="cronicas" data-livro="cronicas-contos">
+  <article class="livro" id="cronicas" data-topo data-livro="cronicas-contos">
     <div class="livro-in">
       <figure class="livro-capa">
         <img src="img/livro-cronicas-contos.jpg" alt="Capa do livro Crônicas, contos e histórias do Rio Grande do Sul, de Nelson Carús." width="900" height="1124">
       </figure>
       <div class="livro-txt">
-        <p class="rotulo">Livro 04</p>
-        <h2>Crônicas, contos e histórias</h2>
+        <p class="rotulo entra">Livro 04</p>
+        <h2 class="entra atraso">Crônicas, contos e histórias</h2>
         <p class="sub">do Rio Grande do Sul</p>
         <p class="chamariz">Quantas histórias extraordinárias podem estar escondidas no cotidiano mais simples?</p>
         <div class="prosa">
@@ -475,15 +550,15 @@ window.CONFIG = {
   </article>
 
   <!-- ============ 05 ============ -->
-  <article class="livro rev" id="terapeuta">
+  <article class="livro" id="terapeuta" data-topo>
     <div class="livro-in">
       <figure class="livro-capa">
         <img src="img/capa.jpg" alt="Capa do livro Terapeuta do Alegrete, de Nelson Carús." width="720" height="1016">
       </figure>
       <div class="livro-txt">
         <span class="selo">O mais novo</span>
-        <p class="rotulo">Livro 05</p>
-        <h2>Terapeuta do Alegrete</h2>
+        <p class="rotulo entra">Livro 05</p>
+        <h2 class="entra atraso">Terapeuta do Alegrete</h2>
         <p class="chamariz">Mais mentiroso que guri em porta de baile. E, mesmo assim, você vai torcer por ele.</p>
         <div class="prosa">
           <p>Dinho é guasca, é esperto, é sem-vergonha. O malandro clássico, agora imortalizado na literatura gaúcha &mdash; e, em cada página, um espelho: você reconhece alguém e, se for honesto, reconhece um pedaço de si.</p>
@@ -496,11 +571,11 @@ window.CONFIG = {
   </article>
 
   <!-- ============ COMBO ============ -->
-  <section class="combo" id="combo">
+  <section class="combo" id="combo" data-topo>
     <div class="combo-in">
-      <div class="rev">
-        <p class="rotulo">A coleção completa</p>
-        <h2 class="h-anton">Leve quatro,<br><span class="grifo">o quinto é nosso</span></h2>
+      <div>
+        <p class="rotulo entra">A coleção completa</p>
+        <h2 class="h-anton entra atraso">Leve quatro,<br><span class="grifo">o quinto é nosso</span></h2>
         <p class="combo-frase" style="margin-top:1.2rem">Na compra de quatro livros, o quinto vai junto &mdash; sem custo nenhum.</p>
         <ul class="inclui">
           <li><span class="mk">&rarr;</span><cite>Entre a vida e a morte: um médico em tempos de pandemia e de guerra</cite></li>
@@ -517,22 +592,22 @@ window.CONFIG = {
           <a class="btn btn-1" data-combo-btn href="#">Quero os cinco livros</a>
         </div>
       </div>
-      <figure class="combo-foto rev">
+      <figure class="combo-foto">
         <img src="img/combo-cinco-livros.jpg" alt="Os cinco livros de Nelson Carús abertos em leque: Crônicas contos e histórias do Rio Grande do Sul, Na espreita da morte, Um sonho além da vida, Entre a vida e a morte e Terapeuta do Alegrete." width="1400" height="892">
       </figure>
     </div>
   </section>
 
   <!-- ============ O AUTOR ============ -->
-  <section class="faixa autor" id="autor">
+  <section class="faixa autor" id="autor" data-topo>
     <div class="autor-in">
-      <figure class="autor-foto rev">
+      <figure class="autor-foto">
         <img src="img/autor-livros.jpg" alt="Nelson Carús, de jaleco branco e estetoscópio, sentado numa poltrona de couro na sua biblioteca, lendo um exemplar de Entre a vida e a morte." width="1000" height="1326">
         <figcaption>Nelson Carús e Entre a vida e a morte</figcaption>
       </figure>
-      <div class="rev">
-        <p class="rotulo">Sobre o autor</p>
-        <h2>Uma vida cuidando,<br><span class="grifo">outra contando</span></h2>
+      <div>
+        <p class="rotulo entra">Sobre o autor</p>
+        <h2 class="entra atraso">Uma vida cuidando,<br><span class="grifo">outra contando</span></h2>
         <div class="prosa">
           <p>Médico, natural de Alegrete, no Rio Grande do Sul, Nelson Carús cresceu lendo Érico Verissimo e contando histórias para os filhos antes de dormir. Aos sete anos, salvou a vida da própria mãe.</p>
           <p>Acompanhou mais de dez mil partos. Quem esteve tantas vezes no instante exato em que uma vida começa acaba aprendendo alguma coisa sobre o resto dela &mdash; e é disso que tratam os seus livros: a vida, a morte, o tempo e os vínculos humanos.</p>
@@ -548,7 +623,7 @@ window.CONFIG = {
 
 </main>
 
-<footer class="rodape">
+<footer class="rodape" data-topo>
   <div class="rodape-in">
     <div>
       <div class="assinatura" style="margin-bottom:.6rem">Nelson <span>Carús</span></div>
@@ -650,26 +725,64 @@ window.CONFIG = {
     }
   }
 
-  // revelação suave ao rolar
+  // ---- entrada dos títulos ----
+  var titulos = document.querySelectorAll(".entra");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function(entradas){
       entradas.forEach(function(en){
         if (en.isIntersecting){ en.target.classList.add("vis"); io.unobserve(en.target); }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: .1 });
-    document.querySelectorAll(".rev").forEach(function(el){ io.observe(el); });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: .25 });
+    titulos.forEach(function(el){ io.observe(el); });
   } else {
-    document.querySelectorAll(".rev").forEach(function(el){ el.classList.add("vis"); });
+    titulos.forEach(function(el){ el.classList.add("vis"); });
   }
 
-  // barra fixa no celular: some quando o combo aparece
+  // ---- o topo assume a cor da seção que está atrás dele ----
+  var topo  = document.querySelector(".topo");
+  var zonas = [].slice.call(document.querySelectorAll("[data-topo]"));
+  var cores = ["--topo-bg","--topo-nome","--topo-menu","--topo-acento","--topo-btn-texto","--topo-linha"];
+  var zonaAtual = null;
+
+  function pintaTopo(){
+    if (!topo || !zonas.length) return;
+    var limite = topo.offsetHeight + 1;   // a linha de baixo do cabeçalho
+    var achou = null;
+    for (var i = 0; i < zonas.length; i++) {
+      var r = zonas[i].getBoundingClientRect();
+      if (r.top <= limite && r.bottom > limite) { achou = zonas[i]; break; }
+    }
+    if (!achou) achou = (window.scrollY < 10) ? zonas[0] : zonas[zonas.length - 1];
+    if (achou === zonaAtual) return;
+    zonaAtual = achou;
+    var css = getComputedStyle(achou);
+    cores.forEach(function(nome){
+      var valor = css.getPropertyValue(nome).trim();
+      if (valor) topo.style.setProperty(nome, valor);
+    });
+  }
+
+  // ---- barra fixa no celular: some quando o combo aparece ----
   var barra = document.getElementById("barra");
   var combo = document.getElementById("combo");
-  window.addEventListener("scroll", function(){
+  function mexeBarra(){
+    if (!barra) return;
     var passou = window.scrollY > window.innerHeight * .8;
     var noCombo = combo && combo.getBoundingClientRect().top < window.innerHeight;
     barra.classList.toggle("ver", passou && !noCombo);
-  }, { passive: true });
+  }
+
+  // um só ouvinte de rolagem, amarrado ao quadro da tela
+  var agendado = false;
+  function aoRolar(){
+    if (agendado) return;
+    agendado = true;
+    requestAnimationFrame(function(){ agendado = false; pintaTopo(); mexeBarra(); });
+  }
+  window.addEventListener("scroll", aoRolar, { passive: true });
+  window.addEventListener("resize", aoRolar, { passive: true });
+  window.addEventListener("load", function(){ zonaAtual = null; pintaTopo(); });
+  pintaTopo();
 })();
 </script>
 

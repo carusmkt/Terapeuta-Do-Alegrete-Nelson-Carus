@@ -109,6 +109,27 @@ A página funciona com tudo vazio e vai ficando completa conforme você preenche
 **Nenhum botão fica morto em nenhum momento.** Enquanto o link de checkout não
 estiver lá, ele abre o WhatsApp; assim que você colar o link, vira compra direta.
 
+### O cabeçalho camaleão
+
+O cabeçalho assume a cor da seção que está imediatamente atrás dele, e o "Carús"
+e o botão "Ver o combo" assumem a cor de destaque daquela seção — a mesma cor do
+botão de compra do livro. Isso é automático: cada seção já declara as suas cores
+no bloco **UM BLOCO POR LIVRO**, e o cabeçalho só copia. Se você mudar a cor de
+um livro lá, o cabeçalho acompanha sozinho.
+
+### As animações
+
+Só os rótulos ("LIVRO 03") e os títulos animam ao entrar na tela: o risquinho se
+desenha da esquerda para a direita e o título sobe. Fotos, textos e botões
+aparecem parados, de propósito, para a página não ficar agitada. Quem tem o
+aparelho configurado para reduzir animações não vê nenhuma.
+
+### O ícone da aba (favicon)
+
+São as letras **NC** desenhadas em código, dentro do próprio `outros-livros.html`
+— não existe arquivo de imagem. Ele se inverte sozinho conforme o aparelho
+estiver no modo claro ou escuro.
+
 ### O combo
 
 O bloco final vende os cinco juntos: *na compra de quatro livros, o quinto é por
