@@ -22,10 +22,10 @@ Abra o `index.html` num editor de texto. Logo no começo do arquivo, procure por
 
 ```js
 window.CONFIG = {
-  checkout:  "#COLE-AQUI-O-LINK-DO-CHECKOUT",   // link da página de pagamento
+  checkout:  "https://pag.ae/82brvgxeu",         // PagBank — Terapeuta do Alegrete
   whatsapp:  "5555999060004",                   // (55) 99906-0004 — já configurado
   whatsMsg:  "Olá! Vim pelo site do Terapeuta do Alegrete e quero falar sobre o livro.",
-  preco:     "R$ 51,47",
+  preco:     "R$ 61,50",
   precoObs:  "Frete já incluso no preço",     // linha pequena embaixo do preço
   envio:     "Envio para todo o Brasil, com frete incluso",
   outrosLivros: "outros-livros.html"          // página com os demais títulos do autor
@@ -135,6 +135,21 @@ estiver no modo claro ou escuro.
 O bloco final vende os cinco juntos: *na compra de quatro livros, o quinto é por
 nossa conta*. A foto é a dos cinco em leque. O botão usa `comboCheckout`.
 
+## Rastreamento (Google Tag Manager)
+
+O container **GTM-KBP8CVPN** está instalado nas **duas** páginas, no formato que
+o Google pede: o script o mais alto possível dentro do `<head>` e o `<noscript>`
+logo depois da abertura do `<body>`.
+
+Não precisa mexer em nada aqui: daqui para a frente, tags, conversões e pixels
+são configurados dentro do painel do Tag Manager, não no código da página.
+
+Um aviso: os botões de compra levam para o **PagBank**, que é um domínio de
+fora. A conversão em si acontece lá, e o Tag Manager sozinho não enxerga isso —
+ele só registra o clique que saiu daqui. Para contar venda de verdade é preciso
+configurar a conversão do lado do PagBank ou trabalhar com o clique no botão
+como evento.
+
 ## Como publicar
 
 Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
@@ -145,16 +160,31 @@ Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
 
 ## Antes de publicar, confira
 
-- [ ] Link de checkout colado e testado
+- [x] Link de checkout do Terapeuta do Alegrete colado (PagBank)
 - [x] Número de WhatsApp: (55) 99906-0004 — configurado
-- [x] Preço: R$ 51,47 com frete incluso — configurado
+- [x] **Preço:** R$ 61,50 nas duas páginas, igual ao checkout
 - [ ] Texto do FAQ bate com a realidade do envio, prazo e formas de pagamento
 - [x] Página `outros-livros.html` criada
 - [x] Resumo dos quatro livros — textos enviados pela autoria
 - [x] Capas dos quatro livros e foto do combo na pasta `img/`
-- [ ] `precoLivro` e `precoCombo` preenchidos
-- [ ] Link de checkout dos quatro livros e do combo
+- [x] `precoLivro` (R$ 61,50) e `precoCombo` (R$ 238,10) preenchidos
+- [ ] Falta o link de checkout de **Um sonho além da vida**
+- [ ] Confirmar se o frete está incluso nos R$ 61,50
 - [x] Nome grafado **Carús** nas duas páginas
+
+## Os links de pagamento (PagBank)
+
+| Livro | Link | Preço | Pagamento |
+|---|---|---|---|
+| Terapeuta do Alegrete | `pag.ae/82brvgxeu` | R$ 61,50 | Pix e boleto |
+| Entre a vida e a morte | `pag.ae/82bCWXnG3` | R$ 61,50 | Pix e boleto |
+| Na espreita da morte | `pag.ae/82bDp7phJ` | R$ 61,50 | Pix |
+| Um sonho além da vida | **falta** | — | — |
+| Crônicas, contos e histórias | `pag.ae/82bDqBsm9` | R$ 61,50 | Pix |
+| Combo 4 + 1 | `pag.ae/82bDPu2HJ` | R$ 238,10 | Pix |
+
+Enquanto o link de *Um sonho além da vida* não existir, o botão dele continua
+caindo no WhatsApp — é só colar o link em `CONFIG` que ele vira compra direta.
 
 ## Textos que dependem de informação que ainda não confirmamos
 
@@ -164,6 +194,9 @@ Estes trechos estão escritos de forma genérica de propósito — revise antes 
 - FAQ "Quais formas de pagamento são aceitas?" — cartão, Pix e boleto
 - FAQ "Dá para pedir uma dedicatória do autor?" — confirmar se o autor faz
 - Bloco da oferta: "Envio para todo o Brasil"
+- **Formas de pagamento:** o FAQ da página de vendas fala em cartão, Pix e
+  boleto. Nos links do PagBank aparecem só Pix e boleto — e em três deles,
+  só Pix. Vale acertar o texto do FAQ com a realidade.
 - `outros-livros.html`, livro 03: a frase de abertura *"Até onde pode ir um
   sonho?"* foi escrita por mim a partir do texto enviado — os outros três livros
   abrem com a pergunta que veio no texto original.
