@@ -22,7 +22,7 @@ Abra o `index.html` num editor de texto. Logo no começo do arquivo, procure por
 
 ```js
 window.CONFIG = {
-  checkout:  "https://pag.ae/82brvgxeu",         // PagBank — Terapeuta do Alegrete
+  checkout:  "https://pag.ae/82d9KM44m",         // PagBank — Terapeuta do Alegrete
   whatsapp:  "5555999060004",                   // (55) 99906-0004 — já configurado
   whatsMsg:  "Olá! Vim pelo site do Terapeuta do Alegrete e quero falar sobre o livro.",
   preco:     "R$ 61,50",
@@ -130,10 +130,29 @@ São as letras **NC** desenhadas em código, dentro do próprio `outros-livros.h
 — não existe arquivo de imagem. Ele se inverte sozinho conforme o aparelho
 estiver no modo claro ou escuro.
 
-### O combo
+### O combo e a conta da economia
 
 O bloco final vende os cinco juntos: *na compra de quatro livros, o quinto é por
-nossa conta*. A foto é a dos cinco em leque. O botão usa `comboCheckout`.
+nossa conta*. A foto é a dos cinco em leque e o botão usa `comboCheckout`.
+
+Dentro dele há um quadro com a conta:
+
+| | |
+|---|---|
+| Os 5 livros, um a um | R$ 307,50 *(riscado)* |
+| No combo | **R$ 242,50** |
+| Você economiza | **R$ 65,00** |
+
+**Esses números não estão escritos em lugar nenhum — eles são calculados.** A
+página pega `precoLivro`, multiplica pela quantidade de livros listados no combo
+e compara com `precoCombo`. Se você mudar qualquer um dos dois preços, ou
+acrescentar um livro na lista, todos os valores se refazem sozinhos: o riscado,
+a economia, o "cada livro sai por R$ 48,50" embaixo de cada livro e o "Economize
+R$ 65,00" da barra do celular.
+
+Se o combo deixar de ser vantajoso (preço do combo maior ou igual ao da soma), o
+quadro inteiro desaparece sozinho, em vez de anunciar uma economia que não
+existe.
 
 ## Rastreamento (Google Tag Manager)
 
@@ -167,8 +186,8 @@ Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
 - [x] Página `outros-livros.html` criada
 - [x] Resumo dos quatro livros — textos enviados pela autoria
 - [x] Capas dos quatro livros e foto do combo na pasta `img/`
-- [x] `precoLivro` (R$ 61,50) e `precoCombo` (R$ 238,10) preenchidos
-- [ ] Falta o link de checkout de **Um sonho além da vida**
+- [x] `precoLivro` (R$ 61,50) e `precoCombo` (R$ 242,50) preenchidos
+- [x] Todos os seis links de pagamento no lugar
 - [ ] Confirmar se o frete está incluso nos R$ 61,50
 - [x] Nome grafado **Carús** nas duas páginas
 
@@ -176,15 +195,14 @@ Qualquer hospedagem de site estático serve. Arraste a pasta inteira para:
 
 | Livro | Link | Preço | Pagamento |
 |---|---|---|---|
-| Terapeuta do Alegrete | `pag.ae/82brvgxeu` | R$ 61,50 | Pix e boleto |
-| Entre a vida e a morte | `pag.ae/82bCWXnG3` | R$ 61,50 | Pix e boleto |
-| Na espreita da morte | `pag.ae/82bDp7phJ` | R$ 61,50 | Pix |
-| Um sonho além da vida | **falta** | — | — |
-| Crônicas, contos e histórias | `pag.ae/82bDqBsm9` | R$ 61,50 | Pix |
-| Combo 4 + 1 | `pag.ae/82bDPu2HJ` | R$ 238,10 | Pix |
+| Terapeuta do Alegrete | `pag.ae/82d9KM44m` | R$ 61,50 | Cartão e Pix |
+| Entre a vida e a morte | `pag.ae/82d9BxMM3` | R$ 61,50 | Cartão e Pix |
+| Na espreita da morte | `pag.ae/82d9Eepr1` | R$ 61,50 | Cartão e Pix |
+| Um sonho além da vida | `pag.ae/82d9G3-4o` | R$ 61,50 | Cartão, Pix e boleto |
+| Crônicas, contos e histórias | `pag.ae/82d9Pe263` | R$ 61,50 | Cartão e Pix |
+| Combo 4 + 1 | `pag.ae/82d9RQosJ` | R$ 242,50 | Cartão e Pix |
 
-Enquanto o link de *Um sonho além da vida* não existir, o botão dele continua
-caindo no WhatsApp — é só colar o link em `CONFIG` que ele vira compra direta.
+Todos os botões de compra das duas páginas levam direto para o PagBank.
 
 ## Textos que dependem de informação que ainda não confirmamos
 
@@ -195,8 +213,8 @@ Estes trechos estão escritos de forma genérica de propósito — revise antes 
 - FAQ "Dá para pedir uma dedicatória do autor?" — confirmar se o autor faz
 - Bloco da oferta: "Envio para todo o Brasil"
 - **Formas de pagamento:** o FAQ da página de vendas fala em cartão, Pix e
-  boleto. Nos links do PagBank aparecem só Pix e boleto — e em três deles,
-  só Pix. Vale acertar o texto do FAQ com a realidade.
+  boleto. Nos links do PagBank aparecem cartão e Pix em todos; boleto só em
+  *Um sonho além da vida*. Vale tirar o boleto do texto do FAQ.
 - `outros-livros.html`, livro 03: a frase de abertura *"Até onde pode ir um
   sonho?"* foi escrita por mim a partir do texto enviado — os outros três livros
   abrem com a pergunta que veio no texto original.

@@ -266,6 +266,12 @@ em{font-style:italic}
 .preco{font-family:"Anton",Impact,sans-serif;font-size:1.95rem;color:var(--titulo);line-height:1;font-variant-numeric:tabular-nums}
 .preco-obs{font-family:"Archivo",sans-serif;font-size:.8rem;font-weight:600;color:var(--apoio)}
 .livro .botoes{margin-top:.5rem}
+/* a vantagem do combo, dita de leve ao lado de cada livro */
+.nota-combo{
+  flex-basis:100%;margin-top:.1rem;
+  font-family:"Archivo",system-ui,sans-serif;font-size:.82rem;color:var(--apoio);
+}
+.nota-combo b{color:var(--acento);font-weight:700}
 
 /* --- 01 Entre a vida e a morte: creme, rosa-antigo e marinho da capa --- */
 #entre-a-vida{--fundo:#F4EEE9;--acento:#9C5C6C;--titulo:#2B2430;--texto:#5B5259;--apoio:#877C81;--borda:rgba(43,36,48,.12)}
@@ -306,6 +312,26 @@ em{font-style:italic}
 .combo .preco{color:var(--papel);font-size:clamp(2.3rem,5.5vw,3.2rem)}
 .combo .preco-obs{color:#9AA6B8}
 .combo .btn-1{--acento:var(--damasco);--acento-texto:var(--noite);box-shadow:5px 5px 0 rgba(0,0,0,.45)}
+
+/* --- a conta: quanto o combo economiza --- */
+.conta{
+  border:1px solid rgba(235,193,143,.3);border-radius:5px;
+  background:rgba(0,0,0,.2);
+  padding:1.2rem 1.5rem 1.2rem;margin:0 0 1.9rem;max-width:30rem;
+}
+.conta-linha{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:.4rem 0;font-family:"Archivo",system-ui,sans-serif;font-size:.92rem;
+}
+.conta-rot{color:#A8B3C4}
+.conta-val{font-variant-numeric:tabular-nums;color:var(--papel);font-weight:600;white-space:nowrap}
+.conta-val.riscado{color:#8793A6;text-decoration:line-through;text-decoration-thickness:1px}
+.conta-linha.destaque .conta-val{font-family:"Anton",Impact,sans-serif;font-weight:400;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1}
+.conta-linha.economia{border-top:1px solid rgba(235,193,143,.22);margin-top:.55rem;padding-top:.85rem}
+.conta-linha.economia .conta-rot{color:var(--damasco);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+.conta-linha.economia .conta-val{color:var(--damasco);font-family:"Anton",Impact,sans-serif;font-weight:400;font-size:clamp(1.3rem,3vw,1.7rem)}
+.conta-pe{margin-top:.95rem;font-family:"Archivo",system-ui,sans-serif;font-size:.82rem;line-height:1.5;color:#9AA6B8}
+.conta-pe b{color:var(--damasco);font-weight:700}
 
 /* ---------- autor ---------- */
 .autor{background:var(--papel-2)}
@@ -386,9 +412,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 window.CONFIG = {
   precoLivro:    "R$ 61,50",                  // mesmo preço para os quatro
   precoObs:      "",                          // confirmar se o frete está incluso
-  precoCombo:    "R$ 238,10",
-  comboObs:      "Os cinco livros",
-  comboCheckout: "https://pag.ae/82bDPu2HJ",  // PagBank — combo 4 + 1
+  precoCombo:    "R$ 242,50",
+  comboCheckout: "https://pag.ae/82d9RQosJ",  // PagBank — combo 4 + 1
 
   terapeuta:     "index.html",                // página do Terapeuta do Alegrete
 
@@ -396,10 +421,10 @@ window.CONFIG = {
   whatsMsg:      "Olá! Vim pelo site do Nelson Carús e quero falar sobre os livros.",
 
   livros: {
-    "entre-a-vida-e-a-morte": { checkout: "https://pag.ae/82bCWXnG3" },
-    "na-espreita-da-morte":   { checkout: "https://pag.ae/82bDp7phJ" },
-    "um-sonho-alem-da-vida":  { checkout: "" },   // <-- ainda sem link de pagamento
-    "cronicas-contos":        { checkout: "https://pag.ae/82bDqBsm9" }
+    "entre-a-vida-e-a-morte": { checkout: "https://pag.ae/82d9BxMM3" },
+    "na-espreita-da-morte":   { checkout: "https://pag.ae/82d9Eepr1" },
+    "um-sonho-alem-da-vida":  { checkout: "https://pag.ae/82d9G3-4o" },
+    "cronicas-contos":        { checkout: "https://pag.ae/82d9Pe263" }
   }
 };
 </script>
@@ -477,6 +502,7 @@ window.CONFIG = {
         <div class="botoes">
           <a class="btn btn-1" data-livro-btn href="#">Comprar este livro</a>
           <a class="btn btn-2" href="#combo">Levar os cinco</a>
+          <span class="nota-combo" data-nota-combo hidden></span>
         </div>
       </div>
     </div>
@@ -504,6 +530,7 @@ window.CONFIG = {
         <div class="botoes">
           <a class="btn btn-1" data-livro-btn href="#">Comprar este livro</a>
           <a class="btn btn-2" href="#combo">Levar os cinco</a>
+          <span class="nota-combo" data-nota-combo hidden></span>
         </div>
       </div>
     </div>
@@ -530,6 +557,7 @@ window.CONFIG = {
         <div class="botoes">
           <a class="btn btn-1" data-livro-btn href="#">Comprar este livro</a>
           <a class="btn btn-2" href="#combo">Levar os cinco</a>
+          <span class="nota-combo" data-nota-combo hidden></span>
         </div>
       </div>
     </div>
@@ -558,6 +586,7 @@ window.CONFIG = {
         <div class="botoes">
           <a class="btn btn-1" data-livro-btn href="#">Comprar este livro</a>
           <a class="btn btn-2" href="#combo">Levar os cinco</a>
+  <span class="nota-combo" data-nota-combo hidden></span>
         </div>
       </div>
     </div>
@@ -598,9 +627,20 @@ window.CONFIG = {
           <li><span class="mk">&rarr;</span><cite>Crônicas, contos e histórias do Rio Grande do Sul</cite></li>
           <li><span class="mk">&rarr;</span><cite>Terapeuta do Alegrete</cite></li>
         </ul>
-        <div class="preco-linha" data-combo-bloco hidden style="margin-bottom:1.6rem">
-          <span class="preco" data-preco-combo></span>
-          <span class="preco-obs" data-combo-obs></span>
+        <div class="conta" data-conta hidden>
+          <div class="conta-linha">
+            <span class="conta-rot">Os <b data-conta-n>5</b> livros, um a um</span>
+            <span class="conta-val riscado" data-conta-avulso></span>
+          </div>
+          <div class="conta-linha destaque">
+            <span class="conta-rot">No combo</span>
+            <span class="conta-val" data-preco-combo></span>
+          </div>
+          <div class="conta-linha economia">
+            <span class="conta-rot">Você economiza</span>
+            <span class="conta-val" data-conta-economia></span>
+          </div>
+          <p class="conta-pe">Cada livro sai por <b data-conta-unitario></b>, em vez de <b data-conta-cheio></b>.</p>
         </div>
         <div class="botoes">
           <a class="btn btn-1" data-combo-btn href="#">Quero os cinco livros</a>
@@ -652,7 +692,7 @@ window.CONFIG = {
 </footer>
 
 <div class="barra" id="barra">
-  <div class="t"><b>Leve quatro, o quinto é nosso</b>Os cinco livros de Nelson Carús</div>
+  <div class="t"><b data-barra-economia>Leve quatro, o quinto é nosso</b>Os cinco livros de Nelson Carús</div>
   <a class="btn btn-1" href="#combo">Ver o combo</a>
 </div>
 
@@ -715,17 +755,52 @@ window.CONFIG = {
     }
   });
 
-  // ---- combo ----
-  var comboBloco = document.querySelector("[data-combo-bloco]");
-  if (comboBloco) {
-    if (c.precoCombo) {
-      document.querySelector("[data-preco-combo]").textContent = c.precoCombo;
-      var cobs = document.querySelector("[data-combo-obs]");
-      if (c.comboObs) { cobs.textContent = c.comboObs; } else { cobs.remove(); }
-      comboBloco.hidden = false;
-    } else {
-      comboBloco.remove();
-    }
+  // ---- a conta do combo ----
+  // A economia não é escrita à mão: sai dos preços acima. Se você mudar
+  // precoLivro ou precoCombo, todos os números da página se refazem sozinhos.
+  function valor(txt){
+    if (!txt) return null;
+    var n = String(txt).replace(/[^\d,.]/g, "")        // tira "R$" e espaços
+                       .replace(/\.(?=\d{3}(\D|$))/g, "")  // tira o ponto de milhar
+                       .replace(",", ".");
+    n = parseFloat(n);
+    return isNaN(n) ? null : n;
+  }
+  function reais(n){
+    var p = n.toFixed(2).split(".");
+    return "R$ " + p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + p[1];
+  }
+
+  var conta   = document.querySelector("[data-conta]");
+  var pLivro  = valor(c.precoLivro);
+  var pCombo  = valor(c.precoCombo);
+  var quantos = document.querySelectorAll(".combo .inclui li").length || 5;
+
+  if (conta && pLivro && pCombo && (pLivro * quantos) > pCombo) {
+    var avulso   = pLivro * quantos;
+    var economia = avulso - pCombo;
+    var unitario = pCombo / quantos;
+
+    conta.querySelector("[data-conta-n]").textContent        = quantos;
+    conta.querySelector("[data-conta-avulso]").textContent   = reais(avulso);
+    conta.querySelector("[data-preco-combo]").textContent    = reais(pCombo);
+    conta.querySelector("[data-conta-economia]").textContent = reais(economia);
+    conta.querySelector("[data-conta-unitario]").textContent = reais(unitario);
+    conta.querySelector("[data-conta-cheio]").textContent    = reais(pLivro);
+    conta.hidden = false;
+
+    // a mesma vantagem, repetida de leve ao lado de cada livro
+    document.querySelectorAll("[data-nota-combo]").forEach(function(e){
+      e.innerHTML = "Nos cinco, cada livro sai por <b>" + reais(unitario) + "</b>";
+      e.hidden = false;
+    });
+
+    // e na barra fixa do celular
+    var be = document.querySelector("[data-barra-economia]");
+    if (be) be.textContent = "Economize " + reais(economia);
+
+  } else if (conta) {
+    conta.remove();   // sem os dois preços, a conta não aparece
   }
   var comboBtn = document.querySelector("[data-combo-btn]");
   if (comboBtn) {
